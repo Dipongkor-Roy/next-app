@@ -9,11 +9,7 @@ const Navbar = () => {
     {
       slug: "/users",
       title: "Users",
-    },
-    // {
-    //     // slug:'/api/auth/signin',
-    //     // title:'LogIn'
-    // }
+    }
   ];
   return (
     <div className="navbar bg-base-100">
@@ -62,14 +58,31 @@ const Navbar = () => {
       <div className="navbar-end">
         {status === "authenticated" ? (
           session && session.user ? (
-            <button className="btn btn-sm">{session.user.name}</button>
+            <>
+              <div className="dropdown">
+                <div tabIndex={0} role="button" className="btn btn-sm ">
+                  {" "}
+                  {session.user.name}
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content  z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
+                >
+                  <li>
+                    <Link href="/api/auth/signout">Sign Out</Link>
+                  </li>
+                </ul>
+              </div>
+            </>
           ) : (
             <button className="btn btn-sm">
-              <Link href="/api/auth/signin">LogIn</Link>
-            </button>
+          <Link href="/api/auth/signin">LogIn</Link>
+        </button>
           )
         ) : (
-          <></>
+          <><button className="btn btn-sm">
+          <Link href="/api/auth/signin">LogIn</Link>
+        </button></>
         )}
       </div>
     </div>
