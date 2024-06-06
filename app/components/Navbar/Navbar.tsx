@@ -75,9 +75,7 @@ const Navbar = () => {
               </div>
             </>
           ) : (
-            <button className="btn btn-sm">
-          <Link href="/api/auth/signin">LogIn</Link>
-        </button>
+            <span></span>
           )
         ) : (
           <><button className="btn btn-sm">
